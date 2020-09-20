@@ -16,9 +16,10 @@ javascript:(function(){t=document.title;u=document.URL;d=new Date().toISOString(
 
 2. Create a new bookmark by right-clicking your browser's bookmark bar
 3. Paste the snippet into the address field and choose an arbitrary title, e.g. "Generate BibLaTeX"
-4. An alert will pop up which contains your BibTeX entry
-5. Copy the content of the alert and paste it into your BIB file
-6. Fix broken control characters, if present
+4. Visit the page you want to cite
+5. An alert will pop up which contains your BibTeX entry
+6. Copy the content of the alert and paste it into your BIB file
+7. Fix broken control characters, if present
 
 E.g. for `github.com`, the entry will look like this:
 
