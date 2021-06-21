@@ -11,7 +11,7 @@ I also did put no effort in handling any LaTeX control characters, please do so 
 1. Simply copy the following code snippet
 
 ```javascript
-javascript:(function(){t=document.title;u=document.URL;d=new Date().toISOString().split("T")[0];id=btoa(u).substring(0,8);alert("@online{" +id+ ",\n  title = {" +t+ "},\n  url = {" +u+ "},\n  urldate = {" +d+ "}\n}");})();
+javascript:(function(){t=document.title;u=document.URL;d=new Date().toISOString().split("T")[0];id=btoa((u+t+d).split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a;},0)).replace(/\W/g,'').substring(0,8);alert("@online{" +id+ ",\n  title = {" +t+ "},\n  url = {" +u+ "},\n  urldate = {" +d+ "}\n}");})();
 ```
 
 2. Create a new bookmark by right-clicking your browser's bookmark bar
@@ -45,7 +45,10 @@ function(){
   t = document.title;
   u = document.URL;
   d = new Date().toISOString().split("T")[0];
-  id = btoa(u).substring(0,8);
+  id = btoa((u + t + d).split('').reduce((a,b) => {
+    a = (( a << 5 ) - a ) + b.charCodeAt(0);
+    return a & a;
+  }, 0)).replace(/\W/g, '').substring(0,8);
   alert("@online{" + id + ",\n  title = {" + t + "},\n  url = {" + u + "},\n  urldate = {" + d + "}\n}");
 }
 ```
